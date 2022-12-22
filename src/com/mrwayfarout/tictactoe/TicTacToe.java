@@ -71,7 +71,7 @@ public class TicTacToe implements Runnable {
 
 	private String waitingString = "Waiting for another player";
 	private String unableToCommunicateWithOpponentString = "Unable to communicate with opponent.";
-	private String wonString = "You won!";
+	private String wonString = "You won!"; 
 	private String enemyWonString = "Opponent won!";
 	private String tieString = "Game ended in a tie.";
 	Painter paint = new Painter();
@@ -129,7 +129,7 @@ public class TicTacToe implements Runnable {
 
 		}
 	}
-
+	//les textes ligne ect
 	private void render(Graphics g) {
 		g.drawImage(board, 0, 0, null);
 		if (unableToCommunicateWithOpponent) {
@@ -200,7 +200,7 @@ public class TicTacToe implements Runnable {
 		}
 
 	}
-	//gerer les erreurs
+	//gerer les erreurs et s'occupe aussi de faire parvenir les infos la ou il faut d'ou la method TCp, UDP 
 	private void tick() {
 		if (errors >= 10) unableToCommunicateWithOpponent = true;
 
