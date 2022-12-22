@@ -59,6 +59,7 @@ public class TicTacToe implements Runnable {
 
 	private int lengthOfSpace = 160;
 	private int errors = 0;
+	//c'est juste pour la ligne genre ou est ce qu'elle se trouve au debut et a la fin
 	private int firstSpot = -1;
 	private int secondSpot = -1;
 
@@ -84,7 +85,7 @@ public class TicTacToe implements Runnable {
 	 * 6, 7, 8
 	 * </pre>
 	 */
-
+	//constructeur tictactoe
 	public TicTacToe() {
 		System.out.println("Please input the IP: ");
 		ip = scanner.nextLine();
@@ -137,8 +138,10 @@ public class TicTacToe implements Runnable {
 			Graphics2D g2 = (Graphics2D) g;
 			//pour avoir un text non pixellsie
 			g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+			//on obtient la taille du string genre combien de lettre il y a dedans pour pouvoir bien le center
 			int stringWidth = g2.getFontMetrics().stringWidth(unableToCommunicateWithOpponentString);
 			g.drawString(unableToCommunicateWithOpponentString, WIDTH / 2 - stringWidth / 2, HEIGHT / 2);
+			//on met un return simple car on ne veut pas que cette condition se mette en marche si jamais on ne peut pas communiquer avec notre adversaire
 			return;
 		}
 
@@ -146,7 +149,7 @@ public class TicTacToe implements Runnable {
 			for (int i = 0; i < spaces.length; i++) {
 				if (spaces[i] != null) {
 					if (spaces[i].equals("X")) {
-						//mettre les images dans la position correct aveec un bon algorythm
+						//mettre les images dans la position correct avec un bon algorythm
 						if (circle) {
 							g.drawImage(redX, (i % 3) * lengthOfSpace + 10 * (i % 3), (int) (i / 3) * lengthOfSpace + 10 * (int) (i / 3), null);
 						} else {
@@ -166,12 +169,12 @@ public class TicTacToe implements Runnable {
 				//width de la ligne
 				g2.setStroke(new BasicStroke(10));
 				g.setColor(Color.BLACK);
-				//s'occupe de dessiner la ligne
+				//s'occupe de dessiner la ligne avec un alrgorythm, depuis le firstspot jusq'au secondSpot
 				g.drawLine(firstSpot % 3 * lengthOfSpace + 10 * firstSpot % 3 + lengthOfSpace / 2, (int) (firstSpot / 3) * lengthOfSpace + 10 * (int) (firstSpot / 3) + lengthOfSpace / 2, secondSpot % 3 * lengthOfSpace + 10 * secondSpot % 3 + lengthOfSpace / 2, (int) (secondSpot / 3) * lengthOfSpace + 10 * (int) (secondSpot / 3) + lengthOfSpace / 2);
 
 				g.setColor(Color.RED);
 				g.setFont(largerFont);
-				//gere la position du text ecrit lors de la victoire
+				//gere la position du text ecrit lors de la victoire || la fontmetrics c'est just pour la position des ecriture ça n'affecte en aucun cas le code en lui meme
 				if (won) {
 					int stringWidth = g2.getFontMetrics().stringWidth(wonString);
 					g.drawString(wonString, WIDTH / 2 - stringWidth / 2, HEIGHT / 2);
